@@ -77,7 +77,7 @@
       div.className = "piece";
       const row = Math.floor(positions[i] / 3);
       const col = positions[i] % 3;
-      div.style.backgroundImage = "/workspaces/AlessandroM00.github.io/20240831_184802.jpg"; // Sostituisci con tua foto
+      div.style.backgroundImage = "./20240831_184802.jpg"; // Sostituisci con tua foto
       div.style.backgroundPosition = `-${col * 100}px -${row * 100}px`;
       div.setAttribute("data-index", positions[i]);
       div.onclick = () => swapPiece(div);
