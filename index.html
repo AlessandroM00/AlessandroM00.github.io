@@ -3,126 +3,108 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Puzzle della Laurea di Alessandro</title>
+  <title>Escape Room della Laurea</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f0f0f0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
       text-align: center;
       padding: 20px;
     }
     h1 {
       color: #333;
     }
-    #puzzle-container {
-      display: grid;
-      grid-template-columns: repeat(3, 100px);
-      grid-template-rows: repeat(3, 100px);
-      gap: 2px;
-      margin: 30px auto;
-      width: max-content;
+    .room {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
     }
-    .piece {
-      width: 100px;
-      height: 100px;
-      background-size: 300px 300px;
-      cursor: pointer;
-      border: 1px solid #ccc;
+    .room img {
+      width: 90%;
+      max-width: 400px;
+      border-radius: 10px;
+      margin-bottom: 15px;
     }
-    #sticky-section {
-      margin-top: 40px;
-    }
-    .sticky {
-      background-color: #fff475;
-      padding: 10px;
-      border-radius: 8px;
-      width: 200px;
-      margin: 10px auto;
-      font-style: italic;
-      box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
-    }
-    textarea, button {
-      margin-top: 10px;
-      padding: 10px;
+    .options button {
+      margin: 10px;
+      padding: 10px 20px;
       font-size: 1em;
+      border-radius: 5px;
+      border: none;
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+    }
+    #finale {
+      display: none;
+      margin-top: 30px;
+    }
+    #finale a {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 24px;
+      background-color: #2196F3;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
     }
   </style>
 </head>
 <body>
-  <h1>🎓 Completa il puzzle di Alessandro!</h1>
+  <h1>🎓 Escape Room della Laurea di Alessandro</h1>
+  <p>Aiuta Alessandro ad arrivare alla sua laurea! Ogni scelta ti porterà più vicino al traguardo... o no 😅</p>
 
-  <div id="puzzle-container"></div>
-  <p id="completed-message" style="display:none; font-weight: bold; font-size: 1.2em; color: green;">✅ Puzzle completato! Ora lascia un messaggio 🎉</p>
-
-  <div id="message-form" style="display:none;">
-    <textarea id="user-message" placeholder="Scrivi il tuo augurio qui..."></textarea><br>
-    <button onclick="addSticky()">📌 Aggiungi il tuo messaggio</button>
+  <div id="room1" class="room" style="display: flex;">
+    <img src="https://i.imgur.com/qQFJ1KM.png" alt="Stanza biblioteca">
+    <p>Sei in biblioteca. Il PC è spento e manca poco alla scadenza per consegnare la tesi. Cosa fai?</p>
+    <div class="options">
+      <button onclick="goToRoom('room2')">Accendi il PC e spera</button>
+      <button onclick="goToRoom('fail')">Vai al bar a prendere un caffè</button>
+    </div>
   </div>
 
-  <div id="sticky-section"></div>
+  <div id="room2" class="room">
+    <img src="https://i.imgur.com/Clc0QCu.png" alt="Stanza programmazione">
+    <p>Il PC si accende ma ti dà errore: 'File non trovato'. Cosa fai?</p>
+    <div class="options">
+      <button onclick="goToRoom('room3')">Recuperi la copia di backup</button>
+      <button onclick="goToRoom('fail')">Urli e spegni tutto</button>
+    </div>
+  </div>
+
+  <div id="room3" class="room">
+    <img src="https://i.imgur.com/z8qAdXb.png" alt="Stanza relatore">
+    <p>Riesci a consegnare! Ma ora devi affrontare il relatore. Ti fa una domanda difficile...</p>
+    <div class="options">
+      <button onclick="goToRoom('finale')">Rispondi con calma e sicurezza</button>
+      <button onclick="goToRoom('fail')">Inventi una risposta assurda</button>
+    </div>
+  </div>
+
+  <div id="fail" class="room">
+    <img src="https://i.imgur.com/zBt2OlF.png" alt="Game Over">
+    <p>Oh no! Hai sbagliato mossa e Alessandro ha perso la pazienza. Riprova 😅</p>
+    <button onclick="restartGame()">🔁 Riprova</button>
+  </div>
+
+  <div id="finale">
+    <h2>🎉 Complimenti! Hai aiutato Alessandro a laurearsi!</h2>
+    <img src="https://i.imgur.com/oLd8ywa.png" alt="Diploma" style="max-width:300px;">
+    <p>Scarica il tuo diploma virtuale come bomboniera 🎁</p>
+    <a href="https://example.com/diploma.pdf" download>📄 Scarica il diploma</a>
+    <p style="margin-top:20px;">📬 Vuoi anche lasciare un messaggio?</p>
+    <a href="mailto:Alessandromultari00@gmail.com?subject=Congratulazioni!&body=Bravo Alessandro, ti meriti tutto questo e molto di più!" style="background-color:orange;">Invia una email a Alessandro</a>
+  </div>
 
   <script>
-    const container = document.getElementById("puzzle-container");
-    let positions = [];
-
-    for (let i = 0; i < 9; i++) {
-      positions.push(i);
+    function goToRoom(id) {
+      document.querySelectorAll('.room').forEach(room => room.style.display = 'none');
+      document.getElementById(id).style.display = id === 'finale' ? 'block' : 'flex';
     }
 
-    // Mescola i pezzi
-    positions.sort(() => Math.random() - 0.5);
-
-    for (let i = 0; i < 9; i++) {
-      const div = document.createElement("div");
-      div.className = "piece";
-      const row = Math.floor(positions[i] / 3);
-      const col = positions[i] % 3;
-      div.style.backgroundImage = "./20240831_184802.jpg"; // Sostituisci con tua foto
-      div.style.backgroundPosition = `-${col * 100}px -${row * 100}px`;
-      div.setAttribute("data-index", positions[i]);
-      div.onclick = () => swapPiece(div);
-      container.appendChild(div);
-    }
-
-    let firstClick = null;
-
-    function swapPiece(div) {
-      if (!firstClick) {
-        firstClick = div;
-        div.style.border = "2px solid blue";
-      } else {
-        const index1 = [...container.children].indexOf(firstClick);
-        const index2 = [...container.children].indexOf(div);
-        container.insertBefore(firstClick, container.children[index2]);
-        container.insertBefore(div, container.children[index1]);
-        firstClick.style.border = "1px solid #ccc";
-        firstClick = null;
-        checkCompletion();
-      }
-    }
-
-    function checkCompletion() {
-      const pieces = document.querySelectorAll(".piece");
-      let correct = true;
-      pieces.forEach((piece, index) => {
-        if (piece.getAttribute("data-index") != index) {
-          correct = false;
-        }
-      });
-      if (correct) {
-        document.getElementById("completed-message").style.display = "block";
-        document.getElementById("message-form").style.display = "block";
-      }
-    }
-
-    function addSticky() {
-      const msg = document.getElementById("user-message").value.trim();
-      if (msg === "") return;
-      const div = document.createElement("div");
-      div.className = "sticky";
-      div.textContent = msg;
-      document.getElementById("sticky-section").appendChild(div);
-      document.getElementById("user-message").value = "";
+    function restartGame() {
+      goToRoom('room1');
     }
   </script>
 </body>
