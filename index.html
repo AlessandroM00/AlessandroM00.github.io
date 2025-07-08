@@ -144,8 +144,10 @@
     <img src="https://i.imgur.com/oLd8ywa.png" alt="Diploma" style="max-width:300px;">
     <p>Scarica il tuo diploma virtuale come bomboniera 🎁</p>
     <a href="https://example.com/diploma.pdf" download>📄 Scarica il diploma</a>
-    <p style="margin-top:20px;">📬 Vuoi anche lasciare un messaggio?</p>
-    <a href="mailto:Alessandromultari00@gmail.com?subject=Congratulazioni!&body=Bravo Alessandro, ti meriti tutto questo e molto di più!" style="background-color:orange;">Invia una email a Alessandro</a>
+    <div>
+    <h2>💬 Lascia un messaggio al Dottore!</h2>
+        <textarea id="messaggio" placeholder="Scrivi qui il tuo messaggio..."></textarea><br>
+        <button onclick="inviaMessaggio()">📨 Invia email</button> </div>
   </div>
 
   <script>
@@ -153,6 +155,11 @@
       document.querySelectorAll('.room').forEach(room => room.style.display = 'none');
       document.getElementById(id).style.display = id === 'finale' ? 'block' : 'flex';
     }
+    function inviaMessaggio() {
+            const testo = document.getElementById("messaggio").value;
+            const mailto = `mailto:Alessandromultari00@gmail.com?subject=Messaggio%20per%20la%20laurea&body=${encodeURIComponent(testo)}`;
+            window.location.href = mailto;
+        }
 
     function restartGame() {
       goToRoom('room1');
