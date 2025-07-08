@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz della Laurea di Alessandro</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to bottom, #fdfbfb, #ebedee);
+            padding: 20px;
+            max-width: 700px;
+            margin: auto;
+            text-align: center;
+        }
+        .hidden {
+            display: none;
+        }
+        input, button {
+            padding: 10px;
+            font-size: 1em;
+            margin: 10px;
+        }
+        .question {
+            margin: 20px 0;
+        }
+        .leaderboard {
+            margin-top: 30px;
+            background-color: #f3f3f3;
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎉 Quiz della Laurea di Alessandro 🎓</h1>
+
+    <div id="start">
+        <p>Inserisci il tuo nome per iniziare:</p>
+        <input type="text" id="playerName" placeholder="Il tuo nome">
+        <button onclick="startGame()">Inizia il quiz!</button>
+    </div>
+
+    <div id="quiz" class="hidden">
+        <div id="questionContainer" class="question"></div>
+        <button onclick="submitAnswer(true)">✅ Vero</button>
+        <button onclick="submitAnswer(false)">❌ Falso</button>
+    </div>
+
+    <div id="result" class="hidden">
+        <h2>🎊 Complimenti <span id="finalName"></span>!</h2>
+        <p>Hai totalizzato <span id="finalScore"></span> punti!</p>
+        <button onclick="restartGame()">Riprova</button>
+        <div class="leaderboard">
+            <h3>🏆 Classifica</h3>
+            <ol id="leaderboard"></ol>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            { text: "Alessandro ha studiato anche di notte?", answer: true },
+            { text: "La tesi di Alessandro parla di cucina molecolare.", answer: false },
+            { text: "Sistemi Operativi è stata la sua materia preferita.", answer: true },
+            { text: "Ha completato la tesi ascoltando solo heavy metal.", answer: false },
+            { text: "Alessandro si è laureato col sorriso.", answer: true }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let playerName = "";
+        let leaderboardData = JSON.parse(localStorage.getItem("leaderboardAlessandro")) || [];
+
+        function startGame() {
+            playerName = document.getElementById("playerName").value.trim();
+            if (playerName === "") return alert("Inserisci un nome!");
+            document.getElementById("start").classList.add("hidden");
+            document.getElementById("quiz").classList.remove("hidden");
+            showQuestion();
+        }
+
+        function showQuestion() {
+            const q = questions[currentQuestion];
+            document.getElementById("questionContainer").innerText = q.text;
+        }
+
+        function submitAnswer(ans) {
+            if (questions[currentQuestion].answer === ans) {
+                score++;
+            }
+            currentQuestion++;
+            if (currentQuestion < questions.length) {
+                showQuestion();
+            } else {
+                endGame();
+            }
+        }
+
+        function endGame() {
+            document.getElementById("quiz").classList.add("hidden");
+            document.getElementById("result").classList.remove("hidden");
+            document.getElementById("finalName").innerText = playerName;
+            document.getElementById("finalScore").innerText = score;
+
+            leaderboardData.push({ name: playerName, score: score });
+            leaderboardData.sort((a, b) => b.score - a.score);
+            leaderboardData = leaderboardData.slice(0, 5); // top 5
+            localStorage.setItem("leaderboardAlessandro", JSON.stringify(leaderboardData));
+
+            const list = document.getElementById("leaderboard");
+            list.innerHTML = "";
+            leaderboardData.forEach(p => {
+                const li = document.createElement("li");
+                li.textContent = `${p.name} - ${p.score} punti`;
+                list.appendChild(li);
+            });
+        }
+
+        function restartGame() {
+            location.reload();
+        }
+    </script>
+</body>
+</html>
