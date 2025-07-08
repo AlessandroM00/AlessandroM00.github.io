@@ -57,19 +57,64 @@
 
   <div id="room1" class="room" style="display: flex;">
     <img src="https://i.imgur.com/qQFJ1KM.png" alt="Stanza biblioteca">
-    <p>Sei in biblioteca. Il PC è spento e manca poco alla scadenza per consegnare la tesi. Cosa fai?</p>
+    <p>Sei in biblioteca. Il PC non si avvia e manca poco alla scadenza per consegnare la tesi. Cosa fai?</p>
     <div class="options">
-      <button onclick="goToRoom('room2')">Accendi il PC e spera</button>
-      <button onclick="goToRoom('fail')">Vai al bar a prendere un caffè</button>
+      <button onclick="goToRoom('room2')">Entri nel BIOS e ripristini il boot-load</button>
+      <button onclick="goToRoom('room_pc_rotto')">Dai due botte al case per farlo ri-partire</button>
+      <button onclick="goToRoom('room_cloud')">Cambi PC, tanto hai tutto in cloud</button>
+      <button onclick="goToRoom('fail')">Tieni premuto il tasto di accensione per 20 secondi</button>
+      <button onclick="goToRoom('fail')">Riprovi tra qualche ora</button>
+    </div>
+  </div>
+
+  <div id="room_pc_rotto" class="room" style="display: flex;">
+    <img src="https://i.imgur.com/qQFJ1KM.png" alt="Stanza biblioteca">
+    <p>Dopo le due botte il PC ha fatto delle scintille, sembra bruciato. Cosa fai?</p>
+    <div class="options">
+      <button onclick="goToRoom('fail')">Chiedi una soluzione a Chatgpt</button>
+      <button onclick="goToRoom('fail')">Dai altre due botte al case</button>
+      <button onclick="goToRoom('fail')">Provi a soffiare nelle ventole come con le cartucce del Game Boy</button>
+      <button onclick="goToRoom('fail')">Chiedi aiuto al tecnico... che però è in pausa caffè</button>
+      <button onclick="goToRoom('fail')">Cerchi su YouTube: "PC rotto cosa fare?"</button>
+      <button onclick="goToRoom('room2')">Cambi PC, tanto hai tutto in cloud</button>
+      <button onclick="goToRoom('fail')">Riprovi tra qualche ora</button>
+    </div>
+  </div>
+
+   <div id="room_cloud" class="room" style="display: flex;">
+    <img src="https://i.imgur.com/qQFJ1KM.png" alt="Stanza biblioteca">
+    <p>Ok, questo nuovo PC funziona perfettamente! Ma non ricordi le password per accedere ai file. Cosa fai?</p>
+    <div class="options">
+      <button onclick="goToRoom('room_mamma')">Chiami a casa e chiedi a tua madre di dirti le password salvate nel tuo PC principale.</button>
+      <button onclick="goToRoom('room_pc_rotto')">Dai due botte al case per sfogarti e cercare di ricordare</button>
+      <button onclick="goToRoom('room_account_bloccato')">Fai il recupero password</button>
+      <button onclick="goToRoom('room3')">Spari a caso finchè non riesci ad accedere</button>
+      <button onclick="goToRoom('fail')">Provi con la password di Facebook"</button>
+      <button onclick="goToRoom('fail')">Inizi a piangere</button>
+    </div>
+  </div>
+
+  <div id="room_mamma" class="room" style="display: flex;">
+    <img src="https://i.imgur.com/qQFJ1KM.png" alt="Stanza biblioteca">
+    <p>Ok, tua mamma ti risponde, ma inizia a chiederti cosa devi mangiare a cena (sono le 10 del mattino). Cosa fai?</p>
+    <div class="options">
+      <button onclick="goToRoom('fail')">Scleri.</button>
+      <button onclick="goToRoom('room_pc_rotto')">Dai due botte al case per non dire parolacce</button>
+      <button onclick="goToRoom('room3')">Rispondi dicendo quello che vuoi mangiare e dopo ti fai dare la password</button>
+      <button onclick="goToRoom('room_account_bloccato')">Spari a caso finchè non riesci ad accedere</button>
+      <button onclick="goToRoom('room_account_bloccato')">Provi con la password di Facebook"</button>
+      <button onclick="goToRoom('fail')">Inizi a piangere</button>
     </div>
   </div>
 
   <div id="room2" class="room">
     <img src="https://i.imgur.com/Clc0QCu.png" alt="Stanza programmazione">
-    <p>Il PC si accende ma ti dà errore: 'File non trovato'. Cosa fai?</p>
+    <p>Il PC adesso si accende ma ti dà errore: 'File non trovato'. Cosa fai?</p>
     <div class="options">
-      <button onclick="goToRoom('room3')">Recuperi la copia di backup</button>
+      <button onclick="goToRoom('room_cloud')">Ti ricordi che hai una copia della tesi su Google Drive</button>
+      <button onclick="goToRoom('room3')">Inizi a grondare di sudore cercando tra i file nel cestino</button>
       <button onclick="goToRoom('fail')">Urli e spegni tutto</button>
+      <button onclick="goToRoom('fail')">Fai la rinuncia agli studi.</button>
     </div>
   </div>
 
@@ -88,10 +133,16 @@
     <button onclick="restartGame()">🔁 Riprova</button>
   </div>
 
+  <div id="room_account_bloccato" class="room">
+    <img src="https://i.imgur.com/zBt2OlF.png" alt="Game Over">
+    <p>Oh no! Il tuo account è stato bloccato per i troppi tentativi. Riprova 😅</p>
+    <button onclick="restartGame()">🔁 Riprova</button>
+  </div>
+
   <div id="finale">
     <h2>🎉 Complimenti! Hai aiutato Alessandro a laurearsi!</h2>
     <img src="https://i.imgur.com/oLd8ywa.png" alt="Diploma" style="max-width:300px;">
-    <p>Scarica il tuo diploma virtuale come bomboniera. 🎁</p>
+    <p>Scarica il tuo diploma virtuale come bomboniera 🎁</p>
     <a href="https://example.com/diploma.pdf" download>📄 Scarica il diploma</a>
     <p style="margin-top:20px;">📬 Vuoi anche lasciare un messaggio?</p>
     <a href="mailto:Alessandromultari00@gmail.com?subject=Congratulazioni!&body=Bravo Alessandro, ti meriti tutto questo e molto di più!" style="background-color:orange;">Invia una email a Alessandro</a>
