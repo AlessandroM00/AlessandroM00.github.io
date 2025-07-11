@@ -141,10 +141,9 @@
 
   <div id="finale">
     <h2>🎉 Complimenti! Hai aiutato Alessandro a laurearsi!</h2>
-    <img src="https://i.imgur.com/oLd8ywa.png" alt="Diploma" style="max-width:300px;">
-    <p>Scarica il tuo diploma virtuale come bomboniera 🎁</p>
-    <a href="https://example.com/diploma.pdf" download>📄 Scarica il diploma</a>
-    <div>
+    <p>Inserisci il tuo nome per ricevere il diploma personalizzato:</p>
+    <input type="text" id="nomeGiocatore" placeholder="Il tuo nome">
+    <button onclick="generaDiploma()">🎓 Genera diploma</button>
     <h2>💬 Lascia un messaggio al Dottore!</h2>
         <textarea id="messaggio" placeholder="Scrivi qui il tuo messaggio..."></textarea><br>
         <button onclick="inviaMessaggio()">📨 Invia email</button> </div>
@@ -160,6 +159,27 @@
             const mailto = `mailto:Alessandromultari00@gmail.com?subject=Messaggio%20per%20la%20laurea&body=${encodeURIComponent(testo)}`;
             window.location.href = mailto;
         }
+
+    function generaDiploma() {
+      const nome = document.getElementById("nomeGiocatore").value.trim();
+      if (nome === "") return alert("Inserisci il tuo nome");
+      const canvas = document.getElementById("canvasDiploma");
+      const ctx = canvas.getContext("2d");
+
+      const background = new Image();
+      background.src = "https://i.imgur.com/oLd8ywa.png"; // diploma base
+      background.onload = function () {
+        ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
+        ctx.font = "28px Georgia";
+        ctx.fillStyle = "#000";
+        ctx.textAlign = "center";
+        ctx.fillText(nome, canvas.width / 2, canvas.height - 60);
+
+        document.getElementById("canvasContainer").style.display = "block";
+        const link = document.getElementById("downloadDiploma");
+        link.href = canvas.toDataURL();
+      };
+    }
 
     function restartGame() {
       goToRoom('room1');
