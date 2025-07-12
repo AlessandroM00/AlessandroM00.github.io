@@ -72,11 +72,11 @@
     <p>Dopo le due botte il PC ha fatto delle scintille, sembra bruciato. Cosa fai?</p>
     <div class="options">
       <button onclick="goToRoom('fail')">Chiedi una soluzione a Chatgpt</button>
-      <button onclick="goToRoom('fail')">Dai altre due botte al case</button>
+      <button onclick="goToRoom('fail_esplosione')">Dai altre due botte al case</button>
       <button onclick="goToRoom('fail')">Provi a soffiare nelle ventole come con le cartucce del Game Boy</button>
       <button onclick="goToRoom('fail')">Chiedi aiuto al tecnico... che però è in pausa caffè</button>
       <button onclick="goToRoom('fail')">Cerchi su YouTube: "PC rotto cosa fare?"</button>
-      <button onclick="goToRoom('room2')">Cambi PC, tanto hai tutto in cloud</button>
+      <button onclick="goToRoom('room_cloud')">Cambi PC, tanto hai tutto in cloud</button>
       <button onclick="goToRoom('fail')">Riprovi tra qualche ora</button>
     </div>
   </div>
@@ -89,7 +89,8 @@
       <button onclick="goToRoom('room_pc_rotto')">Dai due botte al case per sfogarti e cercare di ricordare</button>
       <button onclick="goToRoom('room_account_bloccato')">Fai il recupero password</button>
       <button onclick="goToRoom('room_account_bloccato')">Spari a caso finchè non riesci ad accedere</button>
-      <button onclick="goToRoom('fail')">Provi con la password di Facebook"</button>
+      <button onclick="goToRoom('room_account_bloccato')">Provi con la password di Facebook"</button>
+      <button onclick="goToRoom('fail')">Fai la rinuncia agli studi.</button>
       <button onclick="goToRoom('fail')">Inizi a piangere</button>
     </div>
   </div>
@@ -103,17 +104,6 @@
       <button onclick="goToRoom('room3')">Rispondi dicendo quello che vuoi mangiare e dopo speri che riesca a darti la password</button>
       <button onclick="goToRoom('fail')">Inizi un digiuno come protesta</button>
       <button onclick="goToRoom('fail')">Inizi a piangere</button>
-    </div>
-  </div>
-
-  <div id="room2" class="room">
-    <img src="https://i.imgur.com/Clc0QCu.png" alt="Stanza programmazione">
-    <p>Il PC adesso si accende ma ti dà errore: 'File non trovato'. Cosa fai?</p>
-    <div class="options">
-      <button onclick="goToRoom('room_cloud')">Ti ricordi che hai una copia della tesi su Google Drive</button>
-      <button onclick="goToRoom('room3')">Inizi a grondare di sudore cercando tra i file nel cestino</button>
-      <button onclick="goToRoom('fail')">Urli e spegni tutto</button>
-      <button onclick="goToRoom('fail')">Fai la rinuncia agli studi.</button>
     </div>
   </div>
 
@@ -133,15 +123,27 @@
     <p>Riesci a far smuovere le acque, ma adesso il coordinatore del corso di laurea è arrabbiato con te perchè lo hanno contattato e ripreso per il disguido generato. Come rispondi?</p>
     <div class="options">
       <button onclick="goToRoom('fail')">Male</button>
-      <button onclick="goToRoom('room5')">Bene, ma facendo valere i tuoi diritti in maniera diplomatica</button>
+      <button onclick="goToRoom('finale')">Bene, ma facendo valere i tuoi diritti in maniera diplomatica</button>
       <button onclick="goToRoom('fail')">Lo lavi d'insulti, dai capelli (che non ha) ai piedi.</button>
-      <button onclick="goToRoom('fail')">Decidi di pedinarlo per capire qual è la sua auto e organizzare un bel falò</button>
+      <button onclick="goToRoom('fail_prigione')">Decidi di pedinarlo per capire qual è la sua auto e organizzare un bel falò</button>
     </div>
   </div>
 
   <div id="fail" class="room">
     <img src="https://i.imgur.com/zBt2OlF.png" alt="Game Over">
-    <p>Oh no! Hai sbagliato mossa e Alessandro ha perso la pazienza. Riprova 😅</p>
+    <p>Oh no! Hai sbagliato mossa, adesso la laurea di Alessandro è sempre più lontana. Riprova 😅</p>
+    <button onclick="restartGame()">🔁 Riprova</button>
+  </div>
+
+  <div id="fail_esplosione" class="room">
+    <img src="https://i.imgur.com/zBt2OlF.png" alt="Game Over">
+    <p>Oh no! Hai sbagliato mossa, il PC è esploso e Alessandro non si laurerà mai più. Riprova 😅</p>
+    <button onclick="restartGame()">🔁 Riprova</button>
+  </div>
+
+  <div id="fail_prigione" class="room">
+    <img src="https://i.imgur.com/zBt2OlF.png" alt="Game Over">
+    <p>Oh no! Hai sbagliato mossa, Alessandro è in carcere per il falò organizzato con l'auto di Fiumara. Riprova 😅</p>
     <button onclick="restartGame()">🔁 Riprova</button>
   </div>
 
