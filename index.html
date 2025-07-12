@@ -52,14 +52,14 @@
   </style>
 </head>
 <body>
-  <h1>🎓 Escape Room della Laurea di Alessandro</h1>
+  <h1><strong>🎓 Escape Room "Salva la Laurea di Alessandro"</strong></h1>
   <p>Aiuta Alessandro ad arrivare alla sua laurea! Ogni scelta ti porterà più vicino al traguardo... o no 😅</p>
 
   <div id="room1" class="room" style="display: flex;">
     <img src="room1.png" alt="Stanza biblioteca">
     <p>Sei in biblioteca. Il PC non si avvia e manca poco alla scadenza per consegnare la tesi. Cosa fai?</p>
     <div class="options">
-      <button onclick="goToRoom('room2')">Entri nel BIOS e ripristini il boot-load</button>
+      <button onclick="goToRoom('fail')">Entri nel BIOS e ripristini il boot-load</button>
       <button onclick="goToRoom('room_pc_rotto')">Dai due botte al case per farlo ri-partire</button>
       <button onclick="goToRoom('room_cloud')">Cambi PC, tanto hai tutto in cloud</button>
       <button onclick="goToRoom('fail')">Tieni premuto il tasto di accensione per 20 secondi</button>
@@ -68,7 +68,7 @@
   </div>
 
   <div id="room_pc_rotto" class="room"">
-    <img src="https://i.imgur.com/qQFJ1KM.png" alt="Stanza biblioteca">
+    <img src="room_pc_rotto.png" alt="Stanza biblioteca">
     <p>Dopo le due botte il PC ha fatto delle scintille, sembra bruciato. Cosa fai?</p>
     <div class="options">
       <button onclick="goToRoom('fail')">Chiedi una soluzione a Chatgpt</button>
@@ -82,7 +82,7 @@
   </div>
 
    <div id="room_cloud" class="room" ">
-    <img src="https://i.imgur.com/qQFJ1KM.png" alt="Stanza biblioteca">
+    <img src="room_password.png" alt="Stanza biblioteca">
     <p>Ok, questo nuovo PC funziona perfettamente! Ma non ricordi le password per accedere ai file. Cosa fai?</p>
     <div class="options">
       <button onclick="goToRoom('room_mamma')">Chiami a casa e chiedi a tua madre di dirti le password salvate nel tuo PC principale.</button>
@@ -96,7 +96,7 @@
   </div>
 
   <div id="room_mamma" class="room" ">
-    <img src="https://i.imgur.com/qQFJ1KM.png" alt="Stanza biblioteca">
+    <img src="room_mamma.png" alt="Stanza biblioteca">
     <p>Ok, tua mamma ti risponde, ma inizia a chiederti cosa devi mangiare a cena (sono le 10 del mattino). Cosa fai?</p>
     <div class="options">
       <button onclick="goToRoom('fail')">Scleri.</button>
@@ -108,7 +108,7 @@
   </div>
 
   <div id="room3" class="room">
-    <img src="https://i.imgur.com/z8qAdXb.png" alt="Stanza relatore">
+    <img src="room3.png" alt="Stanza relatore">
     <p>Riesci a consegnare! Il relatore è contento, ma la segreteria didattica non ti ha convalidato tutti i CFU! Cosa fai?</p>
     <div class="options">
       <button onclick="goToRoom('fail')">Inizi a perdere lentamente i sensi...</button>
@@ -119,7 +119,7 @@
   </div>
 
   <div id="room4" class="room">
-    <img src="https://i.imgur.com/z8qAdXb.png" alt="Stanza relatore">
+    <img src="room4.png" alt="Stanza relatore">
     <p>Riesci a far smuovere le acque, ma adesso il coordinatore del corso di laurea è arrabbiato con te perchè lo hanno contattato e ripreso per il disguido generato. Come rispondi?</p>
     <div class="options">
       <button onclick="goToRoom('fail')">Male</button>
@@ -130,31 +130,32 @@
   </div>
 
   <div id="fail" class="room">
-    <img src="https://i.imgur.com/zBt2OlF.png" alt="Game Over">
-    <p>Oh no! Hai sbagliato mossa, adesso la laurea di Alessandro è sempre più lontana. Riprova 😅</p>
+    <img src="rinuncia.png" alt="Game Over">
+    <p>Oh no, non ha funzionato! Hai sbagliato mossa, adesso la laurea di Alessandro è sempre più lontana. Riprova 😅</p>
     <button onclick="restartGame()">🔁 Riprova</button>
   </div>
 
   <div id="fail_esplosione" class="room">
-    <img src="https://i.imgur.com/zBt2OlF.png" alt="Game Over">
-    <p>Oh no! Hai sbagliato mossa, il PC è esploso e Alessandro non si laurerà mai più. Riprova 😅</p>
+    <img src="esplosione.png" alt="Game Over">
+    <p>Oh c**o! Il PC è esploso e Alessandro non si laurerà mai più. Riprova 😅</p>
     <button onclick="restartGame()">🔁 Riprova</button>
   </div>
 
   <div id="fail_prigione" class="room">
-    <img src="https://i.imgur.com/zBt2OlF.png" alt="Game Over">
-    <p>Oh no! Hai sbagliato mossa, Alessandro è in carcere per il falò organizzato con l'auto di Fiumara. Riprova 😅</p>
+    <img src="prigione.png" alt="Game Over">
+    <p>Sarebbe stato bello ma dopo questa Alessandro è in carcere per il falò organizzato con l'auto di Fiumara. Riprova 😅</p>
     <button onclick="restartGame()">🔁 Riprova</button>
   </div>
 
   <div id="room_account_bloccato" class="room">
-    <img src="https://i.imgur.com/zBt2OlF.png" alt="Game Over">
-    <p>Oh no! Il tuo account è stato bloccato per i troppi tentativi. Riprova 😅</p>
+    <img src="account_bloccato.png" alt="Game Over">
+    <p>Il tuo account è stato bloccato per i troppi tentativi. Riprova 😅</p>
     <button onclick="restartGame()">🔁 Riprova</button>
   </div>
 
   <div id="finale">
-    <h2>🎉 Complimenti! Hai aiutato Alessandro a laurearsi!</h2>
+    <img src="laurea.png" alt="Game Over">
+    <h1><strong>🎉 Complimenti! Hai aiutato Alessandro a laurearsi!</strong></h1>
     <p>Inserisci il tuo nome per ricevere il diploma personalizzato:</p>
     <input type="text" id="nomeGiocatore" placeholder="Il tuo nome">
     <button onclick="generaDiploma()">🎓 Genera diploma</button>
