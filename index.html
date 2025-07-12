@@ -88,7 +88,7 @@
       <button onclick="goToRoom('room_mamma')">Chiami a casa e chiedi a tua madre di dirti le password salvate nel tuo PC principale.</button>
       <button onclick="goToRoom('room_pc_rotto')">Dai due botte al case per sfogarti e cercare di ricordare</button>
       <button onclick="goToRoom('room_account_bloccato')">Fai il recupero password</button>
-      <button onclick="goToRoom('room3')">Spari a caso finchè non riesci ad accedere</button>
+      <button onclick="goToRoom('room_account_bloccato')">Spari a caso finchè non riesci ad accedere</button>
       <button onclick="goToRoom('fail')">Provi con la password di Facebook"</button>
       <button onclick="goToRoom('fail')">Inizi a piangere</button>
     </div>
@@ -100,9 +100,8 @@
     <div class="options">
       <button onclick="goToRoom('fail')">Scleri.</button>
       <button onclick="goToRoom('room_pc_rotto')">Dai due botte al case per non dire parolacce</button>
-      <button onclick="goToRoom('room3')">Rispondi dicendo quello che vuoi mangiare e dopo ti fai dare la password</button>
-      <button onclick="goToRoom('room_account_bloccato')">Spari a caso finchè non riesci ad accedere</button>
-      <button onclick="goToRoom('room_account_bloccato')">Provi con la password di Facebook"</button>
+      <button onclick="goToRoom('room3')">Rispondi dicendo quello che vuoi mangiare e dopo speri che riesca a darti la password</button>
+      <button onclick="goToRoom('fail')">Inizi un digiuno come protesta</button>
       <button onclick="goToRoom('fail')">Inizi a piangere</button>
     </div>
   </div>
@@ -120,10 +119,23 @@
 
   <div id="room3" class="room">
     <img src="https://i.imgur.com/z8qAdXb.png" alt="Stanza relatore">
-    <p>Riesci a consegnare! Ma ora devi affrontare il relatore. Ti fa una domanda difficile...</p>
+    <p>Riesci a consegnare! Il relatore è contento, ma la segreteria didattica non ti ha convalidato tutti i CFU! Cosa fai?</p>
     <div class="options">
-      <button onclick="goToRoom('finale')">Rispondi con calma e sicurezza</button>
-      <button onclick="goToRoom('fail')">Inventi una risposta assurda</button>
+      <button onclick="goToRoom('fail')">Inizi a perdere lentamente i sensi...</button>
+      <button onclick="goToRoom('fail')">Decidi di andare di persona in segreteria per ribaltare le scrivanie</button>
+      <button onclick="goToRoom('fail')">Chiedi al tuo relatore via mail di aiutarti (sempre se risponde)</button>
+      <button onclick="goToRoom('room4')">Inizi a contattare la segreteria didattica, la segreteria amministrativa, il comitato studentesco, il senatore accademico, il rappresentante degli studenti, il coordinatore del corso di laurea, l'FBI, la CIA e la protezione animali per sbloccare la situazione</button>
+    </div>
+  </div>
+
+  <div id="room4" class="room">
+    <img src="https://i.imgur.com/z8qAdXb.png" alt="Stanza relatore">
+    <p>Riesci a far smuovere le acque, ma adesso il coordinatore del corso di laurea è arrabbiato con te perchè lo hanno contattato e ripreso per il disguido generato. Come rispondi?</p>
+    <div class="options">
+      <button onclick="goToRoom('fail')">Male</button>
+      <button onclick="goToRoom('room5')">Bene, ma facendo valere i tuoi diritti in maniera diplomatica</button>
+      <button onclick="goToRoom('fail')">Lo lavi d'insulti, dai capelli (che non ha) ai piedi.</button>
+      <button onclick="goToRoom('fail')">Decidi di pedinarlo per capire qual è la sua auto e organizzare un bel falò</button>
     </div>
   </div>
 
