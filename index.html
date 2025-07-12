@@ -160,15 +160,22 @@
   </div>
 
   <div id="finale">
-    <img src="laurea.png" alt="Game Over">
+    <img src="laurea.png" alt="Diploma" style="width: 100%; max-width: 300px; height: auto; border-radius: 12px;">
     <h1><strong>🎉 Complimenti! Hai aiutato Alessandro a laurearsi!</strong></h1>
     <p>Inserisci il tuo nome per ricevere il diploma personalizzato:</p>
-    <input type="text" id="nomeGiocatore" placeholder="Il tuo nome">
+    <input type="text" id="nomeGiocatore" placeholder="Il tuo nome" style="padding: 10px; font-size: 1em; max-width: 80%;">
     <button onclick="generaDiploma()">🎓 Genera diploma</button>
+
+    <div id="canvasContainer" style="margin-top: 20px; display: none;">
+      <canvas id="canvasDiploma" width="600" height="400" style="max-width: 100%; height: auto;"></canvas><br>
+      <a id="downloadDiploma" href="#" download="diploma_alessandro.png">📄 Scarica il diploma</a>
+    </div>
+
     <h2>💬 Lascia un messaggio al Dottore!</h2>
-        <textarea id="messaggio" placeholder="Scrivi qui il tuo messaggio..."></textarea><br>
-        <button onclick="inviaMessaggio()">📨 Invia email</button> </div>
+    <textarea id="messaggio" placeholder="Scrivi qui il tuo messaggio..." style="width: 90%; max-width: 500px; height: 80px; padding: 10px; font-size: 1em;"></textarea><br>
+    <button onclick="inviaMessaggio()">📨 Invia email</button>
   </div>
+
 
   <script>
     function goToRoom(id) {
